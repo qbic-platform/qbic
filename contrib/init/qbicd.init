@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  qbicd The Qbic Core server.
+#
+#
+# chkconfig: 345 80 20
+# description: qbicd
+# processname: qbicd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/qbicd, see below
+if [ -f /etc/sysconfig/qbicd ]; then
+        . /etc/sysconfig/qbicd
+fi
+
+RETVAL=0
+
+prog=qbicd
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/qbicd
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/qbicd}
+
+# qbicd defaults to /usr/bin/qbicd, override with BITCOIND_BIN
+qbicd=${BITCOIND_BIN-/usr/bin/qbicd}
+
+# qbicd opts default to -disablewallet, override with BITCOIND_OPTS
+qbicd_opts=${BITCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $qbicd $qbicd_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

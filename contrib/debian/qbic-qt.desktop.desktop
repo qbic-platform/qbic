@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Qbic
+Comment=Qbic P2P Cryptocurrency
+Exec=qbic-qt %u
+Terminal=false
+Type=Application
+Icon=qbic128
+MimeType=x-scheme-handler/qbic;
+Categories=Office;Finance;
+Name[en_US]=qbic-qt.desktop

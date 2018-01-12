@@ -1,0 +1,6 @@
+usr/local/bin/qbic-qt usr/bin
+share/pixmaps/qbic32.xpm usr/share/pixmaps
+share/pixmaps/qbic16.xpm usr/share/pixmaps
+share/pixmaps/qbic128.png usr/share/pixmaps
+debian/qbic-qt.desktop usr/share/applications
+debian/qbic-qt.protocol usr/share/kde4/services/
