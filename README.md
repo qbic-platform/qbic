@@ -1,8 +1,6 @@
 Qbic Core staging tree 0.12.1
 ===============================
 
-`master:` [![Build Status]]
-
 https://www.qbic.io
 
 
