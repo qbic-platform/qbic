@@ -5,7 +5,5 @@ Utility to generate the seeds.txt list that is compiled into the client
 
 The seeds compiled into the release are created from sipa's DNS seed data, like this:
 
-    curl -s http://bitcoin.sipa.be/seeds.txt > seeds_main.txt
-    python makeseeds.py < seeds_main.txt > nodes_main.txt
-    python generate-seeds.py . > ../../src/chainparamsseeds.h
-
+    qbic-cli masternodelist full ENABLED | awk '{printf ("%s\t%s\n", $10, $7)|"sort -t',' -gk2"}' | cut -d\" -f 1 | tail -n 30 > nodes_main.txt
+    python generate-seeds.py .

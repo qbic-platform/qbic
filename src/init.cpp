@@ -1799,6 +1799,9 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     if(fMasterNode) {
         LogPrintf("MASTERNODE:\n");
 
+        if (SoftSetBoolArg("-listen", true))
+          LogPrintf("This is a masternode. Enabling listen automatically\n");
+
         if(!GetArg("-masternodeaddr", "").empty()) {
             // Hot masternode (either local or remote) should get its address in
             // CActiveMasternode::ManageState() automatically and no longer relies on masternodeaddr.
