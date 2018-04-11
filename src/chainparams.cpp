@@ -85,8 +85,8 @@ public:
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8"); // FIX
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 10 * 60; // Qbic: 1 hour, 30 blocks //10 mim
-        consensus.nPowTargetSpacing =  2.5 * 60; // Qbic: 1 min
-        consensus.fPowAllowMinDifficultyBlocks = false;
+        consensus.nPowTargetSpacing =  2.5 * 60; // Qbic: 1 min //2.5 mins
+        consensus.fPowAllowMinDifficultyBlocks = true; //allows us to ingnore the diff of a block, if it takes to long 
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 6048; // 75% of 8064
         consensus.nMinerConfirmationWindow = 8064; // nPowTargetTimespan / nPowTargetSpacing * 4
