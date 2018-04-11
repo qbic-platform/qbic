@@ -84,12 +84,12 @@ public:
         consensus.BIP34Height = 227931; // FIX
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8"); // FIX
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 60 * 60; // Qbic: 1 hour, 30 blocks
-        consensus.nPowTargetSpacing = 2 * 60; // Qbic: 120 seconds
-        consensus.fPowAllowMinDifficultyBlocks = false;
+        consensus.nPowTargetTimespan = 10 * 60; // Qbic: 1 hour, 30 blocks // 10 mins is more approp
+        consensus.nPowTargetSpacing = 2.5 * 60; // Qbic: 2.5 min
+        consensus.fPowAllowMinDifficultyBlocks = true; //allows you to ignore the block diff if it take to long to find.
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016 //may change
+        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing //*
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -110,7 +110,7 @@ public:
         pchMessageStart[3] = 0xd4;
         vAlertPubKey = ParseHex("0464cc88ce5e9f283d31a2fca5ea95235c0ce4fa8c8ff60adccb2eeb1566254c4ae2cf8b6e6d60f042d9a017ec1b7c6cdc2bb3f2f89ee75fc3705dcde53884154b");
         nDefaultPort = 17195;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin // could do unint32 max but we will wait and see
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(1515754800, 67820, 0x1e0ffff0, 1, 50 * COIN);
